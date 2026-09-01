@@ -1,53 +1,20 @@
-# Transaction Starter Project
+# Toucan Transaction Processing Service
 
-This is the starter project for the Customer Transactions exercise.
+## Overview
 
-## Before you start
+This project is a Java Spring Boot REST API developed as part of the Toucan Payments 2026 Fresher Engineering Challenge.
 
-The first thing you should do after cloning the repository is:
+The application provides a simple transaction-processing service for managing customer transactions. It supports creating transactions, retrieving individual transactions, updating transaction status, and retrieving all transactions belonging to a customer.
 
-### Linux / macOS
+The application uses Spring Boot, Spring Data JPA, H2 Database, Maven, and JUnit.
 
-```bash
-./mvnw clean test
-```
+---
 
-### Windows
+## Problem Understanding
 
-```bat
-mvnw.cmd clean test
-```
+The application manages customer transactions.
 
-The sample test should pass before you begin implementing the exercise.
-
-## What is already provided
-
-- Java 17
-- Spring Boot
-- Maven wrapper
-- Spring Web
-- Spring Data JPA
-- H2 embedded database
-- JUnit / Spring Boot Test
-- A sample REST endpoint: `GET /api/sample`
-- A sample test that loads the Spring context
-
-
-## Exercise
-
-Implement these four operations:
-
-1. Create transaction
-2. Get transaction
-3. Update transaction status
-4. Get all transactions for a customer
-
-
-You may change the surrounding design if you believe your solution is better.
-
-## Transaction fields
-
-Every transaction contains:
+Each transaction contains the following information:
 
 - Transaction ID
 - Customer ID
@@ -56,54 +23,64 @@ Every transaction contains:
 - Transaction Type
 - Transaction Status
 
-### Validation rules
+The service provides four main operations:
 
-Define what makes a transaction valid. At minimum, consider:
+1. Create a transaction
+2. Get a transaction by Transaction ID
+3. Update the status of an existing transaction
+4. Get all transactions for a Customer ID
 
-- Transaction ID
-- Customer ID
-- Amount
-- Currency
-- Transaction type
-- Initial status
+The implementation focuses on clean Java code, input validation, business logic, error handling, persistence, and automated testing.
 
-Also explain any business validation you add beyond the annotations already supplied.
+---
 
-## API skeleton
+## Technology Stack
 
-### Create
+- Java 17
+- Spring Boot 3.5.5
+- Spring Web
+- Spring Data JPA
+- Spring Boot Validation
+- H2 Database
+- Maven
+- JUnit 5
+- Git and GitHub
+- Postman for API testing
 
-`TODO`
+---
 
-Example:
+## Project Structure
 
-```
-TODO
-```
-
-### Get
-
-`TODO`
-
-### Update status
-
-`TODO`
-
-Example:
-
-```
-TODO
-```
-
-### Get customer transactions
-
-`TODO`
-
-## Testing expectations
-
-Add at least four meaningful tests.
-
-Your tests should cover more than just application startup. 
-
-You decide exactly which tests provide the best coverage.
-
+```text
+src
+├── main
+│   ├── java
+│   │   └── com.example.transactionstarter
+│   │       ├── controller
+│   │       │   └── TransactionController.java
+│   │       │
+│   │       ├── dto
+│   │       │   ├── CreateTransactionRequest.java
+│   │       │   └── UpdateStatusRequest.java
+│   │       │
+│   │       ├── exception
+│   │       │   ├── DuplicateTransactionException.java
+│   │       │   ├── GlobalExceptionHandler.java
+│   │       │   └── TransactionNotFoundException.java
+│   │       │
+│   │       ├── model
+│   │       │   └── Transaction.java
+│   │       │
+│   │       ├── repository
+│   │       │   └── TransactionRepository.java
+│   │       │
+│   │       └── service
+│   │           └── TransactionService.java
+│   │
+│   └── resources
+│       └── application.yml
+│
+└── test
+    └── java
+        └── com.example.transactionstarter
+            └── TransactionStarterApplicationTests.java
